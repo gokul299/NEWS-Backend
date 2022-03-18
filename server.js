@@ -5,9 +5,11 @@ app.use(express.json())
 const newsRoute = require('./routes/newsRoute')
 const userRoute = require('./routes/userRoute')
 const port = process.env.PORT || 5000
+const cors = require('cors');
 
+app.use(cors());
 app.use('/api/newsitems/' , newsRoute)
-app.use('/api/users/' , userRoute)
+app.use('/api/users/' , userRoute) 
 
 const path = require('path')
 if(process.env.NODE_ENV === 'production'){
@@ -22,4 +24,4 @@ if(process.env.NODE_ENV === 'production'){
 
 }
 app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
